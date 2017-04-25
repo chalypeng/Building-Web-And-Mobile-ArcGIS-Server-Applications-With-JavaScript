@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create a Map</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="http://js.arcgis.com/3.7/js/dojo/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="http://js.arcgis.com/3.7/js/esri/css/esri.css">
+    <style>
+        html,body,#mapDiv{
+            padding:0;
+            margin: 0;
+            height: 100%;
+        }
+    </style>
+    <script src="http://js.arcgis.com/3.7/"></script>
+    <script>
+        var map;
+
+        require(["esri/map","dojo/domReady!"],function (Map) {
+                map = new Map("mapDiv",{
+                basemap:"topo",
+                center:[-122.45,37.75],
+                zoom:13,
+                sliderStyle:"small"
+            });
+        });
+
+    </script>
+
+
+</head>
+<body class="claro">
+<div id="mapDiv"></div>
+</body>
+</html>
