@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="be929341-12a1-49db-93fa-dd7513e0854c" name="Default" comment="geocoding_widget charpter 5.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ch4/FeatureLayer.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ch5/geocoding_widget.html" />
+    <list default="true" id="be929341-12a1-49db-93fa-dd7513e0854c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Ch2/basic_map.html" afterPath="$PROJECT_DIR$/Ch2/basic_map.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Ch3/graphicexercise.html" afterPath="$PROJECT_DIR$/Ch3/graphicexercise.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -60,8 +56,8 @@
       <file leaf-file-name="FeatureLayer.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Ch4/FeatureLayer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="455">
+              <caret line="54" column="42" lean-forward="true" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -300,7 +296,7 @@
       <workItem from="1490079647463" duration="2155000" />
       <workItem from="1490256085637" duration="14000" />
       <workItem from="1490669695779" duration="162000" />
-      <workItem from="1493089882793" duration="20242000" />
+      <workItem from="1493089882793" duration="20255000" />
     </task>
     <task id="LOCAL-00001" summary="to use layer class.">
       <created>1493096126464</created>
@@ -309,11 +305,18 @@
       <option name="project" value="LOCAL" />
       <updated>1493096126464</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="geocoding_widget charpter 5.">
+      <created>1493112688883</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1493112688883</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33036000" />
+    <option name="totallyTimeSpent" value="33049000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -477,8 +480,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Ch4/FeatureLayer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+        <state relative-caret-position="455">
+          <caret line="54" column="42" lean-forward="true" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
           <folding />
         </state>
       </provider>
