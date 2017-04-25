@@ -15,16 +15,15 @@
     </style>
     <script src="http://js.arcgis.com/3.7/"></script>
     <script>
-        var map;
-
-        require(["esri/map","dojo/domReady!"],function (Map) {
-                map = new Map("mapDiv",{
-                basemap:"topo",
-                center:[-122.45,37.75],
-                zoom:13,
-                sliderStyle:"small"
-            });
-        });
+        dojo.require("esri.map");
+        function init() {
+	        var map = new esri.Map("#mapDiv",{
+	            center:[-56.049,38.485],
+		        zoom:3,
+		        basemap:"streets"
+		        });
+        }
+        dojo.ready(init);
 
     </script>
 
