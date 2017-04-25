@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Create a Map</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-    <link rel="stylesheet" href="http://js.arcgis.com/3.7/js/dojo/dijit/themes/claro/claro.css">
-    <link rel="stylesheet" href="http://js.arcgis.com/3.7/js/esri/css/esri.css">
-    <style>
-        html,body,#mapDiv{
-            padding:0;
-            margin: 0;
-            height: 100%;
-        }
-    </style>
-    <script src="http://js.arcgis.com/3.7/"></script>
-    <script>
-        dojo.require("esri.map");
-        function init() {
-	        var map = new esri.Map("#mapDiv",{
-	            center:[-56.049,38.485],
-		        zoom:3,
-		        basemap:"streets"
-		        });
-        }
-        dojo.ready(init);
-
-    </script>
-
-
+	<title>Simple Map</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=7,IE=9,IE=10">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link rel="stylesheet" href="https://js.arcgis.com/3.7/js/dojo/dijit/themes/claro/claro.css">
+	<link rel="stylesheet" href="https://js.arcgis.com/3.7/js/esri/css/esri.css">
+	<style>
+		html, body, #mapDiv {
+			padding: 0;
+			margin: 0;
+			height: 100%;
+		}
+	</style>
+	<script src="https://js.arcgis.com/3.7/"></script>
+	<script>
+        var map;
+        require(["esri/map", "dojo/domReady!"], function (Map) {
+            map = new Map("mapDiv", {
+                basemap: "topo",
+                center: [113.15, 23.25], // 经纬度
+                zoom: 3, // 默认缩放级别
+                //maxZoom:19, // 最大缩放级别
+                sliderStyle: "large"
+                //sliderLabels:[1,2,3,4,5,6,7,9]
+	            //nav:true
+                //smartNavigation:true
+                //navigationMode: 'classic'
+            });
+        });
+	</script>
 </head>
 <body class="claro">
 <div id="mapDiv"></div>
