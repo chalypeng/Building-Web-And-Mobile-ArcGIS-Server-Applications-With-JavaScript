@@ -1,10 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>graphicexercise</title>
-</head>
-<body>
+	<title>graphicexercise</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=7,IE=9,IE=10">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link rel="stylesheet" href="https://js.arcgis.com/3.7/js/dojo/dijit/themes/claro/claro.css">
+	<link rel="stylesheet" href="https://js.arcgis.com/3.7/js/esri/css/esri.css">
+	<style>
+		html, body, #mapDiv {
+			padding: 0;
+			margin: 0;
+			height: 100%;
+		}
+	</style>
+	<script src="https://js.arcgis.com/3.7/"></script>
+	<script>
+        var map, defPopSymbol, onePopSymbol, twoPopSymbol, threePopSymbol, fourPopSymbol, fivePopSymbol;
+        var resultTemplate;
 
+        require([
+                "esri/map",
+                "esri/tasks/query",
+                "esri/tasks/QueryTask",
+                "esri/symbols/SimpleFillSymbol",
+                "esri/InfoTemplate",
+                "dojo/_base/Color",
+                "dojo/domReady!"
+            ],
+            function (Map, Query, QueryTask, SimpleFillSymbol, InfoTemplate, Color) {
+                map = new Map("mapDiv", {
+                    basemap: "streets",
+                    center: [-105.498, 38.981],
+                    zoom: 6,
+                    sliderStyle: "small"
+                });
+//                defPopSymbol = new SimpleFillSymbol().setColor(new Color([255, 255, 255, 0]));
+                onePopSymbol = new SimpleFillSymbol().setColor(new Color([255, 255, 128, 0.85])); // yellow
+                twoPopSymbol = new SimpleFillSymbol().setColor(new Color([250, 209, 85, 0.85])); //
+                threePopSymbol = new SimpleFillSymbol().setColor(new Color([242, 167, 46, 0.85])); // orange
+                fourPopSymbol = new SimpleFillSymbol().setColor(new Color([173, 83, 19, 0.85])); //
+                fivePopSymbol = new SimpleFillSymbol().setColor(new Color([107, 0, 0, 0.85])); // dark maroon
+                var queryTask = new QueryTask("http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Specialty/ESRI_StateCityHighway_USA/MapServer/2");
+                var query = new Query();
+                query.where = "STATE_NAME = 'Colorado'";
+                query.returnGeometry = true;
+                query.outFields = ["NAME","POP90_SQMI","HOUSEHOLDS","MALES",
+	                "FEMALES","WHITE","BLACK","HISPANIC","STATE_NAME"];
+                queryTask.execute(query, addPolysToMap);
+                resultTemplate = InfoTemplate("County Attributes","${*}");
+            });
+        function addPolysToMap(featureSet) {
+            var features = featureSet.features;
+            var feature;
+            for (var i = 0, pop, attributes; i < features.length; i++) {
+                feature = features[i];
+                attributes = feature.attributes;
+                map.graphics.add(feature.setSymbol(defPopSymbol));
+                pop = attributes.POP90_SQMI;
+                if (pop < 10) {
+                    map.graphics.add(feature.setSymbol(onePopSymbol).setInfoTemplate(resultTemplate));
+
+                } else if (pop >= 10 && pop < 95) {
+                    map.graphics.add(feature.setSymbol(twoPopSymbol).setInfoTemplate(resultTemplate));
+                } else if (pop >= 95 && pop < 365) {
+                    map.graphics.add(feature.setSymbol(threePopSymbol).setInfoTemplate(resultTemplate));
+                } else if (pop >= 365 && pop < 1100) {
+                    map.graphics.add(feature.setSymbol(fourPopSymbol).setInfoTemplate(resultTemplate));
+                } else {
+                    map.graphics.add(feature.setSymbol(fivePopSymbol).setInfoTemplate(resultTemplate));
+                }
+            }
+
+        }
+	</script>
+</head>
+<body class="claro">
+<div id="mapDiv">
+
+</div>
 </body>
 </html>

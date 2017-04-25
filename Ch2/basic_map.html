@@ -17,19 +17,40 @@
 	<script src="https://js.arcgis.com/3.7/"></script>
 	<script>
         var map;
-        require(["esri/map", "dojo/domReady!"], function (Map) {
+        require(["esri/map","esri/geometry/Extent",
+	        "esri/layers/ArcGISDynamicMapServiceLayer",
+	        "dojo/on",
+	        "dojo/domReady!"],
+	        function (Map,Extent,ArcGISDynamicMapServiceLayer) {
             map = new Map("mapDiv", {
                 basemap: "topo",
-                center: [113.15, 23.25], // 经纬度
-                zoom: 3, // 默认缩放级别
+//                center: [113.15, 23.25], // 经纬度
+                center: [-122.45, 37.75], // 经纬度
+                zoom: 5, // 默认缩放级别
                 //maxZoom:19, // 最大缩放级别
-                sliderStyle: "large"
+                sliderStyle: "large",
                 //sliderLabels:[1,2,3,4,5,6,7,9]
 	            //nav:true
-                //smartNavigation:true
+
+                smartNavigation:true
                 //navigationMode: 'classic'
             });
+            var operationalLayer = new ArcGISDynamicMapServiceLayer("http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Demographics/ESRI_Population_World/MapServer"
+            ,{"opacity":0.2});
+            //operationalLayer.setVisibleLayers([1,2]); // 设置可见图层
+
+	        // 设置地图范围
+	        var extent = new Extent(-95.271, 38.933, -95.220, 38.976);
+
+            map.addLayer(operationalLayer);
+            map.setExtent(extent);
+                function displayCoordinates(evt) {
+                    alert(evt.mapPoint.x, evt.mapPoint.y);
+                }
+                on(map,"click",displayCoordinates)
+
         });
+
 	</script>
 </head>
 <body class="claro">
