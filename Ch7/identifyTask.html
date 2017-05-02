@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Identify Task</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=7,IE=9,IE=10">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link rel="stylesheet" href="https://js.arcgis.com/3.7/js/dojo/dijit/themes/claro/claro.css">
+	<link rel="stylesheet" href="https://js.arcgis.com/3.7/js/esri/css/esri.css">
+
+	<script>var dojoConfig = {parseOnLoad: true};</script>
+	<script src="https://js.arcgis.com/3.7/"></script>
+	<style>
+		html, body, #mapDiv {
+			padding: 0;
+			margin: 0;
+			height: 100%;
+			width: 100%;
+		}
+	</style>
+
+	<script>
+        var map;
+        var identifyTask, identifyParams;
+
+        require([
+            "esri/map", "esri/dijit/Popup",
+            "esri/layers/ArcGISDynamicMapServiceLayer",
+            "esri/tasks/IdentifyTask", "esri/tasks/IdentifyResult",
+            "esri/tasks/IdentifyParameters", "esri/dijit/InfoWindow",
+            "esri/symbols/SimpleFillSymbol", "esri/symbols/SimpleLineSymbol",
+            "esri/InfoTemplate",
+            "dojo/_base/Color", "dojo/on", "dojo/domReady!"
+        ], function (Map, Popup, ArcGISDynamicMapServiceLayer, IdentifyTask,
+                     IdentifyResult, IdentifyParameters, InfoWindow,
+                     SimpleFillSymbol, SimpleLineSymbol, InfoTemplate,
+                     Color, on) {
+            var popup = new Popup({
+                fillSymbol: new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255, 0, 0]), 2), new Color([255, 255, 0, 0.25]))
+            }, dojo.create("div"));
+            map = Map("mapDiv", {
+                basemap: "streets",
+                center: [-83.275, 42.573],
+                zoom: 18,
+                infoWindow: popup
+            });
+
+            var landBaseLayer = new ArcGISDynamicMapServiceLayer(
+                "http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/BloomfieldHillsMichigan/Parcels/MapServer",
+                {opacity: 0.55});
+            map.addLayer(landBaseLayer);
+
+            map.on("click", executeIdentifyTask);
+
+            identifyTask = new IdentifyTask("http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/BloomfieldHillsMichigan/Parcels/MapServer");
+
+            identifyParams = new IdentifyParameters();
+            identifyParams.tolerance = 3;
+            identifyParams.returnGeometry = true;
+            identifyParams.layerIds = [0, 2];
+            identifyParams.layerOption = IdentifyParameters.LAYER_OPTION_ALL;
+            identifyParams.width = map.width;
+            identifyParams.height = map.height;
+
+        });
+
+        function executeIdentifyTask(evt) {
+            identifyParams.geometry = evt.mapPoint;
+            identifyParams.mapExtent = map.extent;
+
+            var deferred = identifyTask.execute(identifyParams);
+
+            deferred.addCallback(function (response) {
+                // response is an array of identify result objects
+                // let's return an array of features.
+                return dojo.map(response, function (result) {
+                    var feature = result.feature;
+                    feature.attributes.layerName = result.layerName;
+                    if (result.layerName === "Tax Parcels") {
+                        console.log(feature.attributes.PARCELID);
+                        var template = new esri.InfoTemplate("", "${Postal Address}<br/>Owner of record: ${First Owner Name}");
+                        feature.setInfoTemplate(template);
+                    } else if (result.layerName === "Building Footprints") {
+                        var template = new esri.InfoTemplate("", "Parcel ID: ${PARCELID}");
+                        feature.setInfoTemplate(template);
+                    }
+                    return feature;
+                })
+            });
+
+            map.infoWindow.setFeatures([deferred]);
+            map.infoWindow.show(evt.mapPoint);
+        }
+
+        function addToMap(results) {
+            var featureArray = results.featureSet.features;
+            var feature = featureArray[0];
+
+            map.graphics.add(feature.setSymbol(symbol).setInfoTemplate(infoTemplate));
+
+        }
+	</script>
+</head>
+<body class="claro">
+<div id="mapDiv"></div>
+</body>
+</html>
