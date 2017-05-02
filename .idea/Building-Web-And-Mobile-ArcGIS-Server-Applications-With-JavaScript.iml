@@ -11,6 +11,6 @@
     <orderEntry type="library" name="Dojo-1.8.3" level="application" />
     <orderEntry type="library" name="arcgis-js-api-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="esri" level="application" />
-    <orderEntry type="library" name="dojo" level="application" />
+    <orderEntry type="library" name="arcgis" level="application" />
   </component>
 </module>

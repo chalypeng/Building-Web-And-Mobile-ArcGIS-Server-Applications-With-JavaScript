@@ -1,10 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>geocoding_widget</title>
-</head>
-<body>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9,IE=10">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Geocoding Widget API for Javascript | Simple Geocodeing</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/3.7/js/dojo/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.7/js/esri/css/esri.css">
+    <style>
+        html, body, #mapDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
 
+        body {
+            background-color: #FFF;
+            overflow: hidden;
+            font-family: "Trebuchet MS", serif;
+        }
+
+        #search {
+            display: block;
+            position: absolute;
+            z-index: 2;
+            top: 20px;
+            left: 75px;
+        }
+        #measurementDiv{
+            display: block;
+            position: absolute;
+            z-index: 3;
+            top: 20px;
+            right: 75px;
+            background-color: white;
+        }
+        #overViewDiv{
+            /*display: block;*/
+            position: absolute;
+            z-index: 4;
+            bottom: 10px;
+            left: 10px;
+            height: 150px;
+            width: 250px;
+            border:1px solid #000;
+        }
+        #scalebar{
+            position: absolute;
+            bottom: 50px;
+            margin-left:50%;
+        }
+        #HomeButton{
+            display: block;
+            position: absolute;
+            z-index: 2;
+            top: 100px;
+            left: 20px;
+        }
+    </style>
+    <script src="https://js.arcgis.com/3.7/"></script>
+    <script>
+        var map, geocoder;
+        require([
+            "esri/map",
+            "esri/dijit/Geocoder",
+            "esri/dijit/Measurement",
+            "esri/dijit/Scalebar",
+            "esri/dijit/HomeButton",
+            "esri/dijit/OverviewMap",
+            "dojo/dom",
+            "dojo/domReady!"
+        ], function (Map, Geocoder,Measurement,Scalebar,HomeButton,OverviewMap,dom) {
+            map = new Map("mapDiv", {
+                basemap: "streets",
+                center: [-98.496, 29.430],
+                zoom: 13
+            });
+
+            var geocoder = new Geocoder({
+                map: map,
+                autoComplete: true,
+                arcgisGeocoder: {
+                    name: "Esri World Geocoder",
+                    suffix: " San Antonio, TX"
+                }
+            }, "search");
+            geocoder.startup();
+
+            var measurement = new Measurement({
+                map:map
+            },dom.byId("measurementDiv"));
+            measurement.startup();
+
+            var overviewMap = new OverviewMap({
+                map:map,
+                visible:true
+            },dom.byId("overViewDiv"));
+            overviewMap.startup();
+
+            var scalebar = new Scalebar(
+                {map:map,scalebarUnit:'metric'},
+                dom.byId("scalebar"));
+            //scalebar.startup();
+
+            var home = new HomeButton({
+                map:map
+            },"HomeButton");
+            home.startup();
+        });
+    </script>
+</head>
+<body class="claro">
+<div id="search"></div>
+<div id="HomeButton"></div>
+<div id="measurementDiv"></div>
+<div id="overViewDiv"></div>
+<div id="scalebar"></div>
+<div id="mapDiv">
+
+</div>
 </body>
 </html>

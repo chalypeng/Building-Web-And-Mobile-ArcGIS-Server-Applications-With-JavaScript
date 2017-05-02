@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Spatial Query</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=7,IE=9,IE=10">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link rel="stylesheet" href="https://js.arcgis.com/3.7/js/dojo/dijit/themes/claro/claro.css">
+	<link rel="stylesheet" href="https://js.arcgis.com/3.7/js/esri/css/esri.css">
+	<script src="https://js.arcgis.com/3.7/"></script>
+	<style>
+		html, body, #mapDiv {
+			padding: 0;
+			margin: 0;
+			height: 100%;
+		}
+	</style>
+
+	<script>
+		var map,query,queryTask;
+		var symbol, infoTemplate;
+
+        require([
+		    "esri/map","esri/tasks/query","esri/tasks/QueryTask",
+			"esri/tasks/FeatureSet","esri/symbols/SimpleFillSymbol",
+            "esri/symbols/SimpleLineSymbol","esri/InfoTemplate",
+			"dojo/_base/Color","dojo/on","dojo/domReady!"
+		],function (Map,Query,QueryTask,FeatureSet,SimpleFillSymbol,SimpleLineSymbol,InfoTemplate,Color,on) {
+			// 创建Map对象，地图中心在Louisville, KY 地区
+		    map = new Map("mapDiv",{
+			    basemap:"streets",
+				center:[-85.748,38.249],
+				zoom:13
+			});
+
+		    // 创建用于显示查询结果的符号
+			symbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID,
+				new SimpleLineSymbol(SimpleFillSymbol.STYLE_SOLID,new Color([111,0,255]),2),
+				new Color([255,255,0,0,0.25]));
+			infoTemplate = new InfoTemplate("${OBJECTID}","${*}");
+
+			// 地图点击事件
+			map.on("click",doQuery);
+
+			// 在 require 内部，初始化 queryTask 变量，并注册 QueryTask.complete 事件
+			queryTask = new QueryTask("http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Louisville/LOJIC_LandRecords_Louisville/MapServer/2");
+            queryTask.on("complete",addToMap);
+
+            // 定义查询参数
+			query = new Query();
+			query.returnGeometry = true;
+			query.outFields=["*"];
+
+        });
+        // 点击进行查询事件
+        function doQuery(evt) {
+            // clear currently displayed results
+	        map.graphics.clear();
+
+	        query.geometry = evt.mapPoint;
+	        query.outSpatialReference=map.spatialReference;
+	        queryTask.execute(query);
+
+        }
+        function addToMap(results) {
+            var featureArray = results.featureSet.features;
+            var feature = featureArray[0];
+
+            map.graphics.add(feature.setSymbol(symbol).setInfoTemplate(infoTemplate));
+
+        }
+	</script>
+</head>
+<body class="claro">
+<div id="mapDiv"></div>
+</body>
+</html>
