@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be929341-12a1-49db-93fa-dd7513e0854c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ch8/geocode_begin.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ch8/geocode_end.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Ch9/routing.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Ch8/geocode_begin.html" afterPath="$PROJECT_DIR$/Ch8/geocode_begin.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,11 +26,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="geocode_begin.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="geocode_begin.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Ch8/geocode_begin.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="31" column="53" lean-forward="true" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
+            <state relative-caret-position="282">
+              <caret line="83" column="31" lean-forward="true" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routing.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Ch9/routing.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="49" column="47" lean-forward="true" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="geocode_end.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Ch8/geocode_end.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" column="11" lean-forward="true" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -37,8 +61,8 @@
       <file leaf-file-name="identifyTask.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Ch7/identifyTask.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" column="12" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="20" selection-end-column="12" />
+            <state relative-caret-position="306">
+              <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -67,7 +91,9 @@
         <option value="$PROJECT_DIR$/Ch5/geocoding_widget.html" />
         <option value="$PROJECT_DIR$/Ch6/spatialquery.html" />
         <option value="$PROJECT_DIR$/Ch7/identifyTask.html" />
+        <option value="$PROJECT_DIR$/Ch8/geocode_end.html" />
         <option value="$PROJECT_DIR$/Ch8/geocode_begin.html" />
+        <option value="$PROJECT_DIR$/Ch9/routing.html" />
       </list>
     </option>
   </component>
@@ -84,7 +110,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="799" />
+    <option name="x" value="807" />
+    <option name="y" value="8" />
     <option name="width" value="1079" />
     <option name="height" value="1040" />
   </component>
@@ -117,6 +144,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Building-Web-And-Mobile-ArcGIS-Server-Applications-With-JavaScript" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Building-Web-And-Mobile-ArcGIS-Server-Applications-With-JavaScript" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Building-Web-And-Mobile-ArcGIS-Server-Applications-With-JavaScript" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ch9" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -181,6 +222,11 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.tslint" value="" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Work-GZ-HR\05-Coding\BuildingWebAndMobileArcGISServerApplicationsWithJavascript\Building-Web-And-Mobile-ArcGIS-Server-Applications-With-JavaScript\Ch8" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -297,7 +343,7 @@
       <workItem from="1490669695779" duration="162000" />
       <workItem from="1493089882793" duration="20282000" />
       <workItem from="1493127721642" duration="6557000" />
-      <workItem from="1493690855057" duration="11742000" />
+      <workItem from="1493690855057" duration="18989000" />
     </task>
     <task id="LOCAL-00001" summary="to use layer class.">
       <created>1493096126464</created>
@@ -327,11 +373,18 @@
       <option name="project" value="LOCAL" />
       <updated>1493704670408</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="ch8 begin.">
+      <created>1493709910943</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1493709910943</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51375000" />
+    <option name="totallyTimeSpent" value="58622000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -343,10 +396,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="799" y="0" width="1079" height="1040" extended-state="0" />
+    <frame x="807" y="8" width="1079" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18635927" sideWeight="0.490991" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18635927" sideWeight="0.490991" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.49663785" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296582" sideWeight="0.5033622" order="7" side_tool="true" content_ui="tabs" />
@@ -413,7 +466,8 @@
     <MESSAGE value="geocoding_widget charpter 5." />
     <MESSAGE value="geocoding_widget.html done." />
     <MESSAGE value="ch7 done." />
-    <option name="LAST_COMMIT_MESSAGE" value="ch7 done." />
+    <MESSAGE value="ch8 begin." />
+    <option name="LAST_COMMIT_MESSAGE" value="ch8 begin." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -583,16 +637,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Ch7/identifyTask.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="12" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="20" selection-end-column="12" />
+        <state relative-caret-position="306">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Ch8/geocode_begin.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="31" column="53" lean-forward="true" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
+        <state relative-caret-position="282">
+          <caret line="83" column="31" lean-forward="true" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Ch8/geocode_end.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="11" lean-forward="true" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="815">
+          <caret line="166" column="2" lean-forward="true" selection-start-line="166" selection-start-column="2" selection-end-line="166" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Ch9/routing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="49" column="47" lean-forward="true" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="47" />
           <folding />
         </state>
       </provider>
