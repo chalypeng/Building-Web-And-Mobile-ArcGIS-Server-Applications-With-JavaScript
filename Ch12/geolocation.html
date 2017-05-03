@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7, IE=9, IE=10">
+    <!--The viewport meta tag is used to improve the presentation and behavior of the samples
+      on iOS devices-->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=yes">
+
+    <title>Geolocation</title>
+    <link rel="stylesheet" href="http://js.arcgis.com/3.7/js/esri/css/esri.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.7/js/dojo/dijit/themes/claro/claro.css">
+    <script src="http://js.arcgis.com/3.7/"></script>
+
+    <style>
+        html, body, #mapDiv {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+    </style>
+    <script>
+        require([
+            "dojo/dom",
+            "esri/map",
+            "esri/geometry/Point",
+            "esri/symbols/SimpleMarkerSymbol",
+            "esri/graphic",
+            "esri/geometry/webMercatorUtils",
+            "dojo/_base/Color",
+            "dojo/domReady!"
+        ], function (dom, Map, Point, SimpleMarkerSymbol,
+                     Graphic, webMercatorUtils, Color) {
+
+            // Initialize map, GP and image params
+            var map = new Map("mapDiv", {
+                basemap: "streets",
+                center: [-117.148, 32.706],
+                zoom: 12
+            });
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(zoomToLocation, locationError);
+            }
+
+            function zoomToLocation(location) {
+                var symbol = new SimpleMarkerSymbol();
+                symbol.setStyle(SimpleMarkerSymbol.STYLE_SQUARE);
+                symbol.setColor(new dojo.Color([153, 0, 51, 0.75]));
+
+                var pt = webMercatorUtils.geographicToWebMercator(new Point(location.coords.longitude, location.coords.latitude));
+
+                var graphic = new Graphic(pt, symbol);
+                map.graphics.add(graphic);
+                map.centerAndZoom(pt,12);
+
+            }
+
+            function locationError(error) {
+                switch (error.code){
+                    case error.PERMISSION_DENIED:
+                        alert("Location not privided");
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        alert("Current location not available");
+                        break;
+                    case error.TIMEOUT:
+                        alert("Timeout");
+                        break;
+                    default:
+                        alert("unknow error");
+                        break;
+                }
+
+            }
+        });
+    </script>
+</head>
+<body class="claro">
+<div id="mapDiv"></div>
+
+</div>
+</body>
+</html>
