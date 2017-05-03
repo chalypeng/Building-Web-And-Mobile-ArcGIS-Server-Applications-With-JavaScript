@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=7, IE=9, IE=10">
+	<!--The viewport meta tag is used to improve the presentation and behavior of the samples
+	  on iOS devices-->
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=yes">
+
+	<title>Template</title>
+	<link rel="stylesheet" href="http://js.arcgis.com/3.7/js/esri/css/esri.css">
+	<link rel="stylesheet" href="https://js.arcgis.com/3.7/js/dojo/dijit/themes/claro/claro.css">
+	<script src="http://js.arcgis.com/3.7/"></script>
+
+	<style>
+		html, body, #mapDiv {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+		}
+	</style>
+	<script>
+        require([
+            "esri/map",
+	        "dojo/domReady!"
+        ], function (Map) {
+            var map;
+
+
+            // Initialize map, GP and image params
+            map = new Map("mapDiv", {
+                basemap: "streets",
+                center: [-117.148, 32.706],
+                zoom: 12
+            });
+        });
+	</script>
+</head>
+<body class="claro">
+<div id="mapDiv"></div>
+
+</div>
+</body>
+</html>
