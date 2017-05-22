@@ -33,47 +33,47 @@
             "esri/geometry/webMercatorUtils",
             "dojo/_base/Color",
             "dojo/domReady!"
-        ], function (dom, Map, Point, SimpleMarkerSymbol,
+        ], function(dom, Map, Point, SimpleMarkerSymbol,
             Graphic, webMercatorUtils, Color) {
 
-                // Initialize map, GP and image params
-                var map = new Map("mapDiv", {
-                    basemap: "streets",
-                    center: [-117.148, 32.706],
-                    zoom: 12
-                });
-
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(zoomToLocation, locationError);
-                }
-
-                function zoomToLocation(location) {
-                    var symbol = new SimpleMarkerSymbol();
-                    symbol.setStyle(SimpleMarkerSymbol.STYLE_SQUARE);
-                    symbol.setColor(new dojo.Color([153, 0, 51, 0.75]));
-                    var pt = webMercatorUtils.geographicToWebMercator(new Point(location.coords.longitude, location.coords.latitude));
-                    var graphic = new Graphic(pt, symbol);
-                    map.graphics.add(graphic);
-                    map.centerAndZoom(pt, 12);
-                }
-
-                function locationError(error) {
-                    switch (error.code) {
-                        case error.PERMISSION_DENIED:
-                            alert("Location not privided");
-                            break;
-                        case error.POSITION_UNAVAILABLE:
-                            alert("Current location not available");
-                            break;
-                        case error.TIMEOUT:
-                            alert("Timeout");
-                            break;
-                        default:
-                            alert("unknow error");
-                            break;
-                    }
-                }
+            // Initialize map, GP and image params
+            var map = new Map("mapDiv", {
+                basemap: "streets",
+                center: [-117.148, 32.706],
+                zoom: 12
             });
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(zoomToLocation, locationError);
+            }
+
+            function zoomToLocation(location) {
+                var symbol = new SimpleMarkerSymbol();
+                symbol.setStyle(SimpleMarkerSymbol.STYLE_SQUARE);
+                symbol.setColor(new dojo.Color([153, 0, 51, 0.75]));
+                var pt = webMercatorUtils.geographicToWebMercator(new Point(location.coords.longitude, location.coords.latitude));
+                var graphic = new Graphic(pt, symbol);
+                map.graphics.add(graphic);
+                map.centerAndZoom(pt, 12);
+            }
+
+            function locationError(error) {
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        alert("Location not privided");
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        alert("Current location not available");
+                        break;
+                    case error.TIMEOUT:
+                        alert("Timeout");
+                        break;
+                    default:
+                        alert("unknow error");
+                        break;
+                }
+            }
+        });
     </script>
 </head>
 
